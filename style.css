@@ -1,0 +1,38 @@
+.center {
+    margin: auto;
+    width: 50%;
+  }
+
+.center-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;  
+}  
+
+
+.painting-form {
+    background-color: rgb(242, 242, 242);
+    padding: 40px;
+    border: solid 1px rgb(91, 91, 91);
+    border-radius: 1%;
+  }
+
+.text-center {
+      text-align: center;
+  }
+
+.success, .error {
+      color: white;
+      padding: 5px;
+      margin: 5px 0px 15px 0px;
+  }
+
+
+.success {
+      background-color: green;
+  }
+
+.error {
+      background-color: red;
+  }

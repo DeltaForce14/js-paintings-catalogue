@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS SKELETON-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css" integrity="sha256-ECB9bbROLGm8wOoEbHcHRxlHgzGqYpDtNTgDTyDz0wg=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="style.css">
+    <title>Painting Batabase</title>
+</head>
+<body>
+    <div class="container center">
+        <div class="ten columns">
+        <h1 class="text-center">Painting Batabase</h1>
+        <hr>
+        <!-- Form-->
+        <form class="painting-form">
+            <div>
+                <label for="title">Title</label>
+                <input type="text" id="title" class="u-full-width">
+            </div>
+            <div>
+                <label for="author">Author</label>
+                <input type="text" id="author" class="u-full-width">
+            </div>
+            <div>
+                <label for="reference">Reference</label>
+                <input type="text" id="reference" class="u-full-width">
+            </div>
+            <div class="center-button">
+                <input class="button-primary" type="Submit" value="Submit">
+            </div>
+        </form> <!-- Form END-->
+
+        <hr>
+        <!-- Table -->
+        <table>
+            <!--The <thead> tag is used to group header content in an HTML table.-->
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Author</th>
+                    <th>Reference</th>
+                    <!-- last th for delete option -->
+                    <th></th>
+                </tr>
+            </thead>
+            <!-- Where list of entered paintins will go -->
+            <tbody id="paintings-list"></tbody>
+        </table><!-- Table END -->
+        </div> <!-- Ten Column END-->
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
