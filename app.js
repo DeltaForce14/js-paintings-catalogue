@@ -60,7 +60,6 @@ UI.prototype.clearFields = function(){
 //DELETE PAINTINGS PROTOTYPES
 UI.prototype.deletePainting = function(target){
     if(target.className === 'delete'){
-        console.log('deleting...')
         target.parentElement.parentElement.remove();
     }
 }
@@ -113,7 +112,6 @@ function addPainting(event){
 //DELETE PAINTINGS by Clicking X
 // UI Element: List Table
 const paintingList = document.getElementById('paintings-list');
-console.log(paintingList);
 
 //Event Listener
 paintingList.addEventListener('click',removePainting);
