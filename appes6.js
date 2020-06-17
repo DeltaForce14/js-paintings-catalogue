@@ -1,7 +1,7 @@
 // ES6 
 // PAINTING OBJECT
 class Painting{
-    constructor(title, author, reference){
+    constructor(title, author, reference, price){
         this.title = title;
         this.author = author;
         this.reference = reference;
@@ -16,7 +16,7 @@ class UI {
     addPaintingToList(painting){
 
         // show price with local formating
-        const price =  parseInt(painting.price.value).toLocaleString(
+        const price =  parseInt(painting.price).toLocaleString(
             undefined, // leave undefined to use the browser's locale,
             // or use a string like 'en-US' to override it.
             { minimumFractionDigits: 2 }
