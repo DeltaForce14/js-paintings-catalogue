@@ -71,8 +71,67 @@ class UI {
     }
 };
 
+//LOCAL STORAGE CLASS
+
+class Storage{
+    //fetching paintings from local Storage
+    //separated method as it repeats in other methids below so that we don't have to copy and paste
+    static getPaintings(){
+        let paintings = [];
+
+        //check local storage if it has any paintings stored
+        if (localStorage.getItem('paintings') === null){
+            paintings = [];
+        } else {
+            paintings = JSON.parse(localStorage.getItem('paintings'));
+        }
+        return paintings;
+    }
+
+    //display paintings stored in UI
+    static displayPaintings(){
+        const paintings = Storage.getPaintings();
+
+        // we need to put the book into UI
+        paintings.forEach(function(painting){
+            //Instantiate UI
+            const uiList = new UI();
+
+            uiList.addPaintingToList(painting);
+        });
+
+    }
+
+    //store painting in local storage
+    static storePainting(painting){
+        const paintings = Storage.getPaintings();
+
+        paintings.push(painting);
+
+        localStorage.setItem('paintings', JSON.stringify(paintings))
+    }
+
+    static removePainting(reference){
+        const paintings = Storage.getPaintings();
+        
+        paintings.forEach(function(painting, index){
+            if(painting.reference === reference){
+                paintings.splice(index, 1);
+            }
+        })
+        //reset local storage
+        localStorage.setItem('paintings', JSON.stringify(paintings));
+
+    }
+}
+
 
 //EVENT LISTENERS
+
+//DOM Load Event
+document.addEventListener('DOMContentLoaded',Storage.displayPaintings)
+
+
 //Submit Button 
 const formUI = document.querySelector('.painting-form');
 formUI.addEventListener('submit', addPainting);
@@ -99,6 +158,10 @@ function addPainting(event){
         //UI Add Painting Prototype
         uiList.addPaintingToList(painting);
 
+        //Add to Local Storage 
+        //we don't need to instantiate it as it is static. To call it is enough
+        Storage.storePainting(painting);
+
         //UI Clear Fields Prototype
         uiList.clearFields();
 
@@ -119,11 +182,17 @@ function removePainting(event){
     uiList = new UI();
 
     uiList.deletePainting(event.target);
+
+    // Remove Painting from Local Storage
+    //getting td element that stores Painting information, we need to extract reference
+    Storage.removePainting((event.target.parentElement.parentElement).children[2].textContent);
     
     uiList.showMessage("Item removed", "success");
 
 event.preventDefault();    
 }
+
+
 
 
 
